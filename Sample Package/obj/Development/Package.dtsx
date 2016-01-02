@@ -1,0 +1,687 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/1/2016 3:52:31 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="GROUCHO"
+  DTS:CreatorName="GROUCHO\CHARLES"
+  DTS:DTSID="{11FD67B7-4D41-4560-8751-29066240F2B7}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.2430.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{B26A61BC-C3CA-4863-9D32-FB9AE4EB0733}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[aeongroups]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{396C14E9-3026-48A0-B578-F18F09CC4402}"
+      DTS:ObjectName="aeongroups">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=GROUCHO;Initial Catalog=aeongroups;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[groucho.mvcMusicStore]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{616432D9-331E-40A4-A18E-7D0EF8059176}"
+      DTS:ObjectName="groucho.mvcMusicStore">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=groucho;Initial Catalog=mvcMusicStore;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[TargetDB]"
+      DTS:CreationName="ADO.NET:SQL"
+      DTS:DTSID="{5CADBEAE-AB12-4E2A-B889-38513563F51A}"
+      DTS:ObjectName="TargetDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Integrated Security=SSPI;Connect Timeout=30;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[{2F7EF32E-96DD-4357-8946-F0DE3C8D06D4\}]"
+      DTS:CreationName="ADO.NET:SQL"
+      DTS:DTSID="{2F7EF32E-96DD-4357-8946-F0DE3C8D06D4}"
+      DTS:ObjectName="{2F7EF32E-96DD-4357-8946-F0DE3C8D06D4}">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[{EEB4F30D-F625-451F-B03F-A0BFB87997CB\}]"
+      DTS:CreationName="ADO.NET:SQL"
+      DTS:DTSID="{EEB4F30D-F625-451F-B03F-A0BFB87997CB}"
+      DTS:ObjectName="{EEB4F30D-F625-451F-B03F-A0BFB87997CB}">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{7104FD85-D2FD-4BAF-9C1F-90356BE4BC47}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Get Albums"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Get Albums"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Albums]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Get Albums.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[groucho.mvcMusicStore]"
+                  connectionManagerRefId="Package.ConnectionManagers[groucho.mvcMusicStore]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].Columns[AlbumId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].ExternalColumns[AlbumId]"
+                      lineageId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].Columns[AlbumId]"
+                      name="AlbumId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].Columns[GenreId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].ExternalColumns[GenreId]"
+                      lineageId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].Columns[GenreId]"
+                      name="GenreId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].Columns[ArtistId]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].ExternalColumns[ArtistId]"
+                      lineageId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].Columns[ArtistId]"
+                      name="ArtistId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].Columns[Title]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].ExternalColumns[Title]"
+                      lineageId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].Columns[Title]"
+                      name="Title"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].Columns[Price]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].ExternalColumns[Price]"
+                      lineageId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].Columns[Price]"
+                      name="Price"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].Columns[AlbumArtURL]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].ExternalColumns[AlbumArtURL]"
+                      lineageId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].Columns[AlbumArtURL]"
+                      name="AlbumArtURL"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].Columns[createDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].ExternalColumns[createDate]"
+                      lineageId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].Columns[createDate]"
+                      name="createDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].Columns[modifyDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].ExternalColumns[modifyDate]"
+                      lineageId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].Columns[modifyDate]"
+                      name="modifyDate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].ExternalColumns[AlbumId]"
+                      dataType="i4"
+                      name="AlbumId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].ExternalColumns[GenreId]"
+                      dataType="i4"
+                      name="GenreId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].ExternalColumns[ArtistId]"
+                      dataType="i4"
+                      name="ArtistId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].ExternalColumns[Title]"
+                      dataType="nText"
+                      name="Title" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].ExternalColumns[Price]"
+                      dataType="numeric"
+                      name="Price"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].ExternalColumns[AlbumArtURL]"
+                      dataType="nText"
+                      name="AlbumArtURL" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].ExternalColumns[createDate]"
+                      dataType="dbTimeStamp"
+                      name="createDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].ExternalColumns[modifyDate]"
+                      dataType="dbTimeStamp"
+                      name="modifyDate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Error Output].Columns[AlbumId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Error Output].Columns[AlbumId]"
+                      name="AlbumId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Error Output].Columns[GenreId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Error Output].Columns[GenreId]"
+                      name="GenreId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Error Output].Columns[ArtistId]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Error Output].Columns[ArtistId]"
+                      name="ArtistId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Error Output].Columns[Title]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Error Output].Columns[Title]"
+                      name="Title" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Error Output].Columns[Price]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Error Output].Columns[Price]"
+                      name="Price"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Error Output].Columns[AlbumArtURL]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Error Output].Columns[AlbumArtURL]"
+                      name="AlbumArtURL" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Error Output].Columns[createDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Error Output].Columns[createDate]"
+                      name="createDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Error Output].Columns[modifyDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Error Output].Columns[modifyDate]"
+                      name="modifyDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Write to Staging"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Write to Staging"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[stg_Albums]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Write to Staging.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[aeongroups]"
+                  connectionManagerRefId="Package.ConnectionManagers[aeongroups]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Write to Staging.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Write to Staging.Inputs[OLE DB Destination Input].Columns[AlbumId]"
+                      cachedDataType="i4"
+                      cachedName="AlbumId"
+                      externalMetadataColumnId="Package\Data Flow Task\Write to Staging.Inputs[OLE DB Destination Input].ExternalColumns[AlbumId]"
+                      lineageId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].Columns[AlbumId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Write to Staging.Inputs[OLE DB Destination Input].Columns[GenreId]"
+                      cachedDataType="i4"
+                      cachedName="GenreId"
+                      externalMetadataColumnId="Package\Data Flow Task\Write to Staging.Inputs[OLE DB Destination Input].ExternalColumns[GenreId]"
+                      lineageId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].Columns[GenreId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Write to Staging.Inputs[OLE DB Destination Input].Columns[ArtistId]"
+                      cachedDataType="i4"
+                      cachedName="ArtistId"
+                      externalMetadataColumnId="Package\Data Flow Task\Write to Staging.Inputs[OLE DB Destination Input].ExternalColumns[ArtistId]"
+                      lineageId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].Columns[ArtistId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Write to Staging.Inputs[OLE DB Destination Input].Columns[Title]"
+                      cachedDataType="nText"
+                      cachedName="Title"
+                      externalMetadataColumnId="Package\Data Flow Task\Write to Staging.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
+                      lineageId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].Columns[Title]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Write to Staging.Inputs[OLE DB Destination Input].Columns[Price]"
+                      cachedDataType="numeric"
+                      cachedName="Price"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Data Flow Task\Write to Staging.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
+                      lineageId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].Columns[Price]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Write to Staging.Inputs[OLE DB Destination Input].Columns[AlbumArtURL]"
+                      cachedDataType="nText"
+                      cachedName="AlbumArtURL"
+                      externalMetadataColumnId="Package\Data Flow Task\Write to Staging.Inputs[OLE DB Destination Input].ExternalColumns[AlbumArtURL]"
+                      lineageId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].Columns[AlbumArtURL]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Write to Staging.Inputs[OLE DB Destination Input].Columns[createDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="createDate"
+                      externalMetadataColumnId="Package\Data Flow Task\Write to Staging.Inputs[OLE DB Destination Input].ExternalColumns[createDate]"
+                      lineageId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].Columns[createDate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Write to Staging.Inputs[OLE DB Destination Input].Columns[modifyDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="modifyDate"
+                      externalMetadataColumnId="Package\Data Flow Task\Write to Staging.Inputs[OLE DB Destination Input].ExternalColumns[modifyDate]"
+                      lineageId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output].Columns[modifyDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Write to Staging.Inputs[OLE DB Destination Input].ExternalColumns[AlbumId]"
+                      dataType="i4"
+                      name="AlbumId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Write to Staging.Inputs[OLE DB Destination Input].ExternalColumns[GenreId]"
+                      dataType="i4"
+                      name="GenreId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Write to Staging.Inputs[OLE DB Destination Input].ExternalColumns[ArtistId]"
+                      dataType="i4"
+                      name="ArtistId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Write to Staging.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
+                      dataType="nText"
+                      name="Title" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Write to Staging.Inputs[OLE DB Destination Input].ExternalColumns[Price]"
+                      dataType="numeric"
+                      name="Price"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Write to Staging.Inputs[OLE DB Destination Input].ExternalColumns[AlbumArtURL]"
+                      dataType="nText"
+                      name="AlbumArtURL" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Write to Staging.Inputs[OLE DB Destination Input].ExternalColumns[createDate]"
+                      dataType="dbTimeStamp"
+                      name="createDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Write to Staging.Inputs[OLE DB Destination Input].ExternalColumns[modifyDate]"
+                      dataType="dbTimeStamp"
+                      name="modifyDate" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Write to Staging.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\Write to Staging.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Write to Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Write to Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Write to Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Write to Staging.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\Write to Staging.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\Get Albums.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute T-SQL Statement Task"
+      DTS:CreationName="Microsoft.DbMaintenanceTSQLExecuteTask"
+      DTS:Description="Execute T-SQL Statement Task"
+      DTS:DTSID="{CC08DE59-F3FE-402B-9155-AC69372D0740}"
+      DTS:ExecutableType="Microsoft.DbMaintenanceTSQLExecuteTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute T-SQL Statement Task"
+      DTS:TaskContact="Execute T-SQL Statement Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{5CADBEAE-AB12-4E2A-B889-38513563F51A}"
+          SQLTask:SqlStatementSource="use aeonGroups&#xA;GO&#xA;&#xA;truncate table dbo.stg_Albums"
+          SQLTask:ServerVersion="9"
+          SQLTask:ExtendedLogging="True"
+          SQLTask:LocalConnectionForLogging=""
+          SQLTask:TaskName=""
+          SQLTask:IgnoreDatabasesInNotOnlineState="False" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{BA9F67ED-9508-4369-832F-BA39BF49688E}"
+      DTS:From="Package\Execute T-SQL Statement Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Data Flow Task" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="225,42"
+          Id="Package\Execute T-SQL Statement Task"
+          TopLeft="197,166" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Data Flow Task"
+          TopLeft="206,273" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="309.5,208">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-28,65"
+              Start="0,0"
+              End="-28,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.5"
+                    Point2="0,32.5"
+                    Point3="-4,32.5" />
+                  <mssgle:LineSegment
+                    End="-24,32.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-24,32.5"
+                    Point2="-28,32.5"
+                    Point3="-28,36.5" />
+                  <mssgle:LineSegment
+                    End="-28,57.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="133,42"
+          Id="Package\Data Flow Task\Get Albums"
+          TopLeft="140,99" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Data Flow Task\Write to Staging"
+          TopLeft="193,199" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="206.5,141">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="64,58"
+              Start="0,0"
+              End="64,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25"
+                    Point2="0,29"
+                    Point3="4,29" />
+                  <mssgle:LineSegment
+                    End="60,29" />
+                  <mssgle:CubicBezierSegment
+                    Point1="60,29"
+                    Point2="64,29"
+                    Point3="64,33" />
+                  <mssgle:LineSegment
+                    End="64,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Get Albums">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Write to Staging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
